@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "258893569722",
+    "firebase_url": "https://arbusto-6b504.firebaseio.com",
+    "project_id": "arbusto-6b504",
+    "storage_bucket": "arbusto-6b504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258893569722:android:12bc5a79c67a3dc2",
+        "android_client_info": {
+          "package_name": "com.plantsimulator.arbusto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258893569722-1bdnq9nn1nubu8lmtli251g4cagncng7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plantsimulator.arbusto",
+            "certificate_hash": "9ad0842085a2b56fd2c498ab252b1429a56bf867"
+          }
+        },
+        {
+          "client_id": "258893569722-fhucr064qnjbqf7bk84j54vfkkk45l7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnpON9x3X_M3-HE4yD1pPnLagzfLWsV0g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258893569722-fhucr064qnjbqf7bk84j54vfkkk45l7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
