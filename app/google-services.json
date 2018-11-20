@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "258893569722-mmmr7ntriht3j9v3ibiphaok2k2m5ep1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.plantsimulator.arbusto",
+            "certificate_hash": "8e63c40e5d90e81f2215946a6b293b7678077310"
+          }
+        },
+        {
           "client_id": "258893569722-fhucr064qnjbqf7bk84j54vfkkk45l7l.apps.googleusercontent.com",
           "client_type": 3
         }

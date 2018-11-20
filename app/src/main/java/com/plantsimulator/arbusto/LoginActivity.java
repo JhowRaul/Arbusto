@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,6 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editSenha;
     private FirebaseAuth mAuth;
 
+    // Login facebook
+    private CallbackManager callbackManager;
+    private LoginButton loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +37,37 @@ public class LoginActivity extends AppCompatActivity {
         editLogin = findViewById(R.id.editLogin);
         editSenha = findViewById(R.id.editSenha);
         mAuth = FirebaseAuth.getInstance();
+
+
+        // Login facebook inicio
+        callbackManager = CallbackManager.Factory.create();
+
+        final boolean loggedIn = AccessToken.getCurrentAccessToken() != null;
+        if(loggedIn){
+            logarFB();
+        }
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email");
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                logarFB();
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
+        // Login facebook final
     }
 
     public void telaSignUp(View view){
@@ -53,4 +94,17 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    // Logar facebook inicio
+    private void logarFB(){
+        Intent novaIntent = new Intent(LoginActivity.this,InitialActivity.class);
+        startActivity(novaIntent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    // Fim logar FB
 }
