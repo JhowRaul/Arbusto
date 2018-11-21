@@ -5,32 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.plantsimulator.arbusto.EditarPerfilActivity">
+    tools:context="com.plantsimulator.arbusto.AlterarSenha">
 
     <TextView
+        android:id="@+id/textAlterar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tela Editar Perfil"/>
+        android:text="Tela Alterar Senha"/>
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editSenhaAntiga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"/>
+        android:hint="Senha antiga"/>
 
     <EditText
-        android:id="@+id/editNome"
+        android:id="@+id/editNovaSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome"/>
+        android:hint="Nova senha"/>
 
-    <ImageView
-        android:id="@+id/imgPerfil"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:background="#cccccc"
-        android:onClick="selecionarFoto" />
+    <EditText
+        android:id="@+id/editConfirmaNovaSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirmar nova senha"/>
 
     <Button
         android:id="@+id/btnSalvar"
@@ -40,27 +39,11 @@
         android:text="Salvar" />
 
     <Button
-        android:id="@+id/btnAlterarSenha"
+        android:id="@+id/btnCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5pt"
-        android:onClick="alterarSenha"
-        android:text="Alterar Senha" />
-
-    <Button
-        android:id="@+id/btnExcluirConta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5pt"
-        android:onClick="excluirConta"
-        android:text="Excluir conta" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="sair"
-        android:layout_marginTop="5pt"
-        android:text="Sair" />
+        android:onClick="cacelar"
+        android:text="Cancelar" />
 
     <ProgressBar
         android:id="@+id/progressSalvar"

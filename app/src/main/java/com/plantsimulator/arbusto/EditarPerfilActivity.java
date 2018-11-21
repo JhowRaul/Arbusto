@@ -43,6 +43,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     private ProgressBar progressSalvar;
     private ImageView imgPerfil;
     private ArrayList<String> photos;
+    //private Button btnExcluirConta;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -70,6 +71,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         progressSalvar = findViewById(R.id.progressSalvar);
         progressSalvar.setVisibility(ProgressBar.GONE);
         btnSalvar = findViewById(R.id.btnSalvar);
+        //btnExcluirConta = findViewById(R.id.btnExcluirConta);
 
         btnSalvar.setOnClickListener(this);
 
@@ -124,6 +126,9 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         salvarDadosUsuario(uid, user);
 
         progressSalvar.setVisibility(ProgressBar.GONE);
+
+        Intent intent = new Intent(this, InitialActivity.class);
+        startActivity(intent);
     }
 
     private void resetForm(){
@@ -222,6 +227,43 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
 
     public void sair(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void excluirConta(View view){
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String uId = currentUser.getUid().toString();
+
+        // Removendo dados
+        mDatabase.child("users").child(uId)
+                .removeValue();
+
+        // Removendo foto
+        StorageReference fotoRef = mStorageRef.child("images/" + uId);
+        fotoRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                //Toast.makeText(EditarPerfilActivity.this, "Foto excluída com sucesso.", Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                //Toast.makeText(EditarPerfilActivity.this, "Falha na exclusão de foto.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        currentUser.delete();
+
+        Toast.makeText(EditarPerfilActivity.this, "Usuário excluído com sucesso.", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void alterarSenha(View view){
+
+
+        Intent intent = new Intent(this, InitialActivity.class);
         startActivity(intent);
     }
 }
