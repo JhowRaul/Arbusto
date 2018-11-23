@@ -42,7 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         // Login facebook inicio
         callbackManager = CallbackManager.Factory.create();
 
-        final boolean loggedIn = AccessToken.getCurrentAccessToken() != null;
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean loggedIn = accessToken != null && !accessToken.isExpired();
         if(loggedIn){
             logarFB();
         }

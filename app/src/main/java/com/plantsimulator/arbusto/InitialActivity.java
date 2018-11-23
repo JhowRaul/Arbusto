@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +33,11 @@ public class InitialActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        // FB
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+        //Fim FB
+
         textNome = findViewById(R.id.editLogin);
         textLogin = findViewById(R.id.textLogin);
 
@@ -44,6 +51,12 @@ public class InitialActivity extends AppCompatActivity {
             //textNome.setText("Nome: " + nome);
             //imgPerfil.set
 
+        } else if(isLoggedIn) {
+            Toast.makeText(InitialActivity.this, "Logado com FB.", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(InitialActivity.this, "Você precisa logar.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -53,8 +66,11 @@ public class InitialActivity extends AppCompatActivity {
     }
 
     public void sair(View view){
+        AccessToken.setCurrentAccessToken(null);
+        mAuth.signOut();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

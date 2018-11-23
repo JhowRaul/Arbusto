@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +67,11 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
+        // FB
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+        //Fim FB
+
         editEmail = findViewById(R.id.editEmail);
         editNome = findViewById(R.id.editNome);
         progressSalvar = findViewById(R.id.progressSalvar);
@@ -81,6 +87,12 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
             editEmail.setText(email);
             recuperarDadosUsuario(currentUser.getUid().toString());
 
+        } else if(isLoggedIn) {
+            Toast.makeText(EditarPerfilActivity.this, "Logado com FB.", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(EditarPerfilActivity.this, "Você precisa logar.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -226,8 +238,11 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     }
 
     public void sair(View view){
+        AccessToken.setCurrentAccessToken(null);
+        mAuth.signOut();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void excluirConta(View view){
