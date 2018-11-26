@@ -89,6 +89,8 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
 
         } else if(isLoggedIn) {
             Toast.makeText(EditarPerfilActivity.this, "Logado com FB.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, InitialActivity.class);
+            startActivity(intent);
         } else{
             Toast.makeText(EditarPerfilActivity.this, "Você precisa logar.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);

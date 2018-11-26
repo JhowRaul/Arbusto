@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.plantsimulator.arbusto.plantioAPI.PesquisarPlantioActivity;
 
 public class InitialActivity extends AppCompatActivity {
 
@@ -75,6 +76,11 @@ public class InitialActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void telaPesquisarPlantio(View view){
+        Intent intent = new Intent(this, PesquisarPlantioActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -18,6 +18,13 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/btnPlantios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="telaPesquisarPlantio"
+        android:text="Pesquisar Plantio" />
+
+    <Button
         android:id="@+id/btnEditarPerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
