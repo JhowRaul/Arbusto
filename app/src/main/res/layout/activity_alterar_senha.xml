@@ -17,18 +17,24 @@
         android:id="@+id/editSenhaAntiga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         android:hint="Senha antiga"/>
 
     <EditText
         android:id="@+id/editNovaSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         android:hint="Nova senha"/>
 
     <EditText
         android:id="@+id/editConfirmaNovaSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         android:hint="Confirmar nova senha"/>
 
     <Button
@@ -47,6 +53,7 @@
 
     <ProgressBar
         android:id="@+id/progressSalvar"
+        android:visibility="gone"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_marginTop="10pt"

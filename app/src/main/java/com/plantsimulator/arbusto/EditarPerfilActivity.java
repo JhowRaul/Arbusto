@@ -278,7 +278,7 @@ public class EditarPerfilActivity extends AppCompatActivity implements View.OnCl
     public void alterarSenha(View view){
 
 
-        Intent intent = new Intent(this, InitialActivity.class);
+        Intent intent = new Intent(this, AlterarSenha.class);
         startActivity(intent);
     }
 }

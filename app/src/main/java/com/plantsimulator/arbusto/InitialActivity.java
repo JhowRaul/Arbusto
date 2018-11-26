@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ public class InitialActivity extends AppCompatActivity {
     private TextView textNome;
     private TextView textLogin;
     private ImageView imgPerfil;
+    private Button btnEditarPerfil;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -40,6 +42,7 @@ public class InitialActivity extends AppCompatActivity {
 
         textNome = findViewById(R.id.editLogin);
         textLogin = findViewById(R.id.textLogin);
+        btnEditarPerfil = findViewById(R.id.btnEditarPerfil);
 
         if (currentUser != null) {
             String email = currentUser.getEmail();
@@ -52,6 +55,7 @@ public class InitialActivity extends AppCompatActivity {
             //imgPerfil.set
 
         } else if(isLoggedIn) {
+            btnEditarPerfil.setVisibility(View.GONE);
             Toast.makeText(InitialActivity.this, "Logado com FB.", Toast.LENGTH_SHORT).show();
         } else{
             Toast.makeText(InitialActivity.this, "Você precisa logar.", Toast.LENGTH_SHORT).show();

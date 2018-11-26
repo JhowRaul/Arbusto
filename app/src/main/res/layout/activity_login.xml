@@ -17,6 +17,8 @@
         android:id="@+id/editSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         android:hint="Senha"/>
 
     <Button
